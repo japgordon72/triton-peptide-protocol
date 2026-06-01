@@ -80,3 +80,70 @@ button {
   background: rgba(75, 163, 181, 0.4);
   border-radius: 3px;
 }
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  html, body { font-size: 14px; }
+
+  header { padding: 12px 16px !important; flex-wrap: wrap; gap: 8px !important; }
+
+  div[style*="maxWidth: \"720px\""],
+  div[style*="max-width: 720px"] {
+    padding: 20px 16px 0 !important;
+  }
+
+  div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 420px) {
+  div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12px !important;
+  }
+
+  .no-print { display: none !important; }
+
+  .print-only { display: block !important; }
+
+  /* Expand all compound cards */
+  .compound-card > div:last-child {
+    display: flex !important;
+  }
+
+  /* Summary box */
+  .print-summary {
+    background: #f0f8fa !important;
+    border: 1px solid #4ba3b5 !important;
+    color: black !important;
+  }
+  .print-summary p { color: black !important; }
+
+  /* Cards */
+  .compound-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+    margin-bottom: 12px !important;
+  }
+  .compound-card p, .compound-card li, .compound-card span {
+    color: black !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 20mm;
+    size: A4 portrait;
+  }
+}
