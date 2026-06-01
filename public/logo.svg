@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <defs>
+    <style>
+      .navy { fill: #0d1b4b; }
+      .teal  { fill: #4ba3b5; }
+      .white { fill: #ffffff; }
+    </style>
+    <clipPath id="yin-dark">
+      <path d="M 400,285 A 205,205 0 0,0 400,695 A 102.5,102.5 0 0,1 400,490 A 102.5,102.5 0 0,0 400,285 Z"/>
+    </clipPath>
+    <clipPath id="yin-light">
+      <path d="M 400,285 A 205,205 0 0,1 400,695 A 102.5,102.5 0 0,0 400,490 A 102.5,102.5 0 0,1 400,285 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ░░ BACKGROUND ░░ -->
+  <rect width="800" height="900" fill="white"/>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- OUTER MOLECULAR CHAIN RING       -->
+  <!-- Center (400,470) r=310, 300° arc -->
+  <!-- 14 nodes, gap at bottom          -->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+
+  <!-- Connection lines -->
+  <g stroke="#4ba3b5" stroke-width="2.2" fill="none" stroke-linecap="round">
+    <line x1="245" y1="738" x2="152" y2="656"/>
+    <line x1="152" y1="656" x2="99"  y2="543"/>
+    <line x1="99"  y1="543" x2="94"  y2="419"/>
+    <line x1="94"  y1="419" x2="138" y2="305"/>
+    <line x1="138" y1="305" x2="224" y2="215"/>
+    <line x1="224" y1="215" x2="339" y2="166"/>
+    <line x1="339" y1="166" x2="461" y2="166"/>
+    <line x1="461" y1="166" x2="576" y2="215"/>
+    <line x1="576" y1="215" x2="662" y2="305"/>
+    <line x1="662" y1="305" x2="706" y2="419"/>
+    <line x1="706" y1="419" x2="701" y2="543"/>
+    <line x1="701" y1="543" x2="648" y2="656"/>
+    <line x1="648" y1="656" x2="555" y2="738"/>
+  </g>
+
+  <!-- Node circles (hollow, teal) -->
+  <g fill="white" stroke="#4ba3b5" stroke-width="2.2">
+    <circle cx="245" cy="738" r="10"/>
+    <circle cx="152" cy="656" r="10"/>
+    <circle cx="99"  cy="543" r="10"/>
+    <circle cx="94"  cy="419" r="10"/>
+    <circle cx="138" cy="305" r="10"/>
+    <circle cx="224" cy="215" r="10"/>
+    <circle cx="339" cy="166" r="10"/>
+    <circle cx="461" cy="166" r="10"/>
+    <circle cx="576" cy="215" r="10"/>
+    <circle cx="662" cy="305" r="10"/>
+    <circle cx="706" cy="419" r="10"/>
+    <circle cx="701" cy="543" r="10"/>
+    <circle cx="648" cy="656" r="10"/>
+    <circle cx="555" cy="738" r="10"/>
+  </g>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- YIN-YANG                        -->
+  <!-- Center (400,490) r=205          -->
+  <!-- Dark = left half / Light = right-->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+
+  <!-- Dark (left) half -->
+  <path d="M 400,285
+           A 205,205 0 0,0 400,695
+           A 102.5,102.5 0 0,1 400,490
+           A 102.5,102.5 0 0,0 400,285 Z"
+        fill="#0d1b4b"/>
+
+  <!-- Light (right) half -->
+  <path d="M 400,285
+           A 205,205 0 0,1 400,695
+           A 102.5,102.5 0 0,0 400,490
+           A 102.5,102.5 0 0,1 400,285 Z"
+        fill="white"/>
+
+  <!-- Yin-yang outer border -->
+  <circle cx="400" cy="490" r="205" fill="none" stroke="#0d1b4b" stroke-width="2.5"/>
+
+  <!-- Small light dot (upper, in dark area) -->
+  <circle cx="400" cy="388" r="34" fill="white"/>
+
+  <!-- Small dark dot (lower, in light area) -->
+  <circle cx="400" cy="592" r="34" fill="#0d1b4b"/>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- MOLECULAR STRUCTURE — white/right   -->
+  <!-- Steroid-like ring around (495, 548) -->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <g clip-path="url(#yin-light)">
+    <g fill="none" stroke="#0d1b4b" stroke-width="1.8" stroke-linejoin="round">
+      <!-- Hexagon A -->
+      <polygon points="473,508 499,493 525,508 525,538 499,553 473,538"/>
+      <!-- Hexagon B fused right -->
+      <polygon points="525,508 551,493 577,508 577,538 551,553 525,538"/>
+      <!-- Pentagon below A -->
+      <polygon points="447,538 473,538 473,568 454,580 438,562"/>
+      <!-- Bond extensions -->
+      <line x1="499" y1="493" x2="499" y2="474"/>
+      <line x1="577" y1="508" x2="592" y2="498"/>
+      <line x1="577" y1="538" x2="592" y2="548"/>
+      <line x1="438" y1="562" x2="424" y2="572"/>
+    </g>
+  </g>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- DNA DOUBLE HELIX — dark side      -->
+  <!-- Around (320, 615)                 -->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <g clip-path="url(#yin-dark)">
+    <g fill="none" stroke="#4ba3b5" stroke-width="1.8" stroke-linecap="round">
+      <!-- Left strand -->
+      <path d="M 295,570 C 283,586 316,604 304,622 C 292,640 268,652 280,672"/>
+      <!-- Right strand -->
+      <path d="M 347,570 C 359,586 326,604 338,622 C 350,640 374,652 362,672"/>
+      <!-- Rungs -->
+      <line x1="299" y1="577" x2="343" y2="577"/>
+      <line x1="308" y1="596" x2="334" y2="596"/>
+      <line x1="302" y1="617" x2="340" y2="617"/>
+      <line x1="312" y1="638" x2="348" y2="638"/>
+      <line x1="282" y1="657" x2="360" y2="657"/>
+    </g>
+  </g>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- MERMAID FIGURE                     -->
+  <!-- Teal line art, overlapping yin-yang-->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+
+  <!-- --- FISH TAIL (enters dark side) --- -->
+  <!-- Outer tail shape -->
+  <path d="M 348,310
+           C 336,336 330,362 336,386
+           C 342,410 358,422 355,444
+           C 352,462 338,470 334,483
+           C 320,472 306,460 314,442
+           C 322,424 340,420 338,402
+           C 336,382 322,365 325,342
+           C 328,322 340,310 348,310 Z"
+        fill="#0d1b4b" stroke="#4ba3b5" stroke-width="1.8"/>
+
+  <!-- Tail fin left -->
+  <path d="M 334,483 C 318,496 298,507 292,524
+           C 308,508 328,496 340,488 Z"
+        fill="#4ba3b5" opacity="0.85"/>
+
+  <!-- Tail fin right -->
+  <path d="M 355,444 C 368,458 378,474 374,492
+           C 365,474 356,460 348,452 Z"
+        fill="#4ba3b5" opacity="0.85"/>
+
+  <!-- Tail stripe details -->
+  <g stroke="#4ba3b5" stroke-width="1.2" fill="none" opacity="0.7" clip-path="url(#yin-dark)">
+    <line x1="328" y1="462" x2="310" y2="490"/>
+    <line x1="335" y1="458" x2="320" y2="484"/>
+    <line x1="343" y1="456" x2="332" y2="480"/>
+    <line x1="351" y1="458" x2="344" y2="480"/>
+  </g>
+
+  <!-- --- LOWER BODY / HIP AREA --- -->
+  <path d="M 334,248
+           C 322,262 318,278 322,294
+           C 326,308 338,316 348,314
+           C 358,312 366,304 366,290
+           C 366,276 358,264 350,255
+           C 346,251 340,248 334,248 Z"
+        fill="#0d1b4b" stroke="#4ba3b5" stroke-width="1.8"/>
+
+  <!-- --- TORSO --- -->
+  <path d="M 330,162
+           C 318,178 312,198 315,216
+           C 318,234 328,248 334,252
+           C 340,250 350,250 356,252
+           C 362,248 372,234 374,216
+           C 376,198 370,178 360,162
+           C 352,156 338,156 330,162 Z"
+        fill="#0d1b4b" stroke="#4ba3b5" stroke-width="1.8"/>
+
+  <!-- Chest detail lines -->
+  <g stroke="#4ba3b5" stroke-width="1.2" fill="none" opacity="0.6">
+    <path d="M 340,174 C 338,182 336,192 337,202"/>
+    <path d="M 350,174 C 352,182 354,192 353,202"/>
+  </g>
+
+  <!-- --- NECK --- -->
+  <rect x="344" y="140" width="16" height="24" rx="6"
+        fill="#0d1b4b" stroke="#4ba3b5" stroke-width="1.5"/>
+
+  <!-- --- HEAD --- -->
+  <circle cx="352" cy="120" r="24"
+          fill="#0d1b4b" stroke="#4ba3b5" stroke-width="1.8"/>
+
+  <!-- Face profile suggestion -->
+  <path d="M 360,108 C 368,112 372,120 370,130 C 368,138 362,143 356,143"
+        fill="none" stroke="#4ba3b5" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- --- HAIR (flowing right) --- -->
+  <path d="M 338,98
+           C 346,84 368,80 390,90
+           C 416,102 444,122 458,146
+           C 470,168 464,192 450,204
+           C 437,215 420,220 405,218
+           C 390,216 376,210 364,207
+           C 352,204 342,206 335,212"
+        fill="#4ba3b5" stroke="#4ba3b5" stroke-width="1.5" opacity="0.9"/>
+
+  <!-- Hair second strand -->
+  <path d="M 346,94
+           C 358,78 382,74 405,86
+           C 428,98 450,120 458,148"
+        fill="none" stroke="#4ba3b5" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- --- LEFT ARM (raised, holding trident) --- -->
+  <path d="M 328,186 C 316,176 306,162 300,146 C 296,134 295,120 298,108"
+        fill="none" stroke="#0d1b4b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 328,186 C 316,176 306,162 300,146 C 296,134 295,120 298,108"
+        fill="none" stroke="#4ba3b5" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- --- RIGHT ARM (lower) --- -->
+  <path d="M 368,194 C 378,204 385,216 382,232"
+        fill="none" stroke="#0d1b4b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 368,194 C 378,204 385,216 382,232"
+        fill="none" stroke="#4ba3b5" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- TRIDENT                -->
+  <!-- Staff + 3 prongs        -->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░ -->
+
+  <!-- Staff -->
+  <line x1="298" y1="108" x2="293" y2="46"
+        stroke="#0d1b4b" stroke-width="6" stroke-linecap="round"/>
+  <line x1="298" y1="108" x2="293" y2="46"
+        stroke="#4ba3b5" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossbar at y=62 -->
+  <line x1="272" y1="62" x2="314" y2="62"
+        stroke="#0d1b4b" stroke-width="5"/>
+  <line x1="272" y1="62" x2="314" y2="62"
+        stroke="#4ba3b5" stroke-width="2"/>
+
+  <!-- Center prong -->
+  <path d="M 293,62 L 293,38"
+        stroke="#0d1b4b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 293,62 L 293,38"
+        stroke="#4ba3b5" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Left prong (curves outward) -->
+  <path d="M 272,62 C 269,53 267,44 270,36"
+        fill="none" stroke="#0d1b4b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 272,62 C 269,53 267,44 270,36"
+        fill="none" stroke="#4ba3b5" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Right prong (curves outward) -->
+  <path d="M 314,62 C 317,53 319,44 316,36"
+        fill="none" stroke="#0d1b4b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 314,62 C 317,53 319,44 316,36"
+        fill="none" stroke="#4ba3b5" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Sparkles near trident tip -->
+  <g fill="#4ba3b5">
+    <polygon points="332,52 334,46 336,52 342,54 336,56 334,62 332,56 326,54" opacity="0.9"/>
+    <circle cx="348" cy="42" r="3" opacity="0.7"/>
+    <circle cx="324" cy="36" r="2" opacity="0.6"/>
+    <circle cx="354" cy="62" r="1.8" opacity="0.5"/>
+  </g>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <!-- TEXT                              -->
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <text x="400" y="790"
+        text-anchor="middle"
+        font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
+        font-weight="900"
+        font-size="64"
+        fill="#0d1b4b"
+        letter-spacing="5">TRITON PEPTIDE</text>
+
+  <text x="400" y="858"
+        text-anchor="middle"
+        font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
+        font-weight="900"
+        font-size="64"
+        fill="#0d1b4b"
+        letter-spacing="5">BIOLOGICS LAB</text>
+</svg>
