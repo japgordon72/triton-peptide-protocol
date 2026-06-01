@@ -218,16 +218,92 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 ---
 
+## Features (Phase 1 — Shipped)
+
+| Feature | Description |
+|---|---|
+| Deterministic compound matching | Python lookup — no LLM hallucination on compound selection |
+| 30-SKU protocol data | Indications, mechanism, dosage, warnings per compound |
+| RAG pipeline | 237 Pinecone vectors from LaValle Handbook 2022 |
+| Claude clinical summaries | Practitioner-framed, structured per compound |
+| Email-gated entry | Captures name, email, license type → localStorage (CRM-ready) |
+| Biomarker range indicators | Color-coded low/optimal/high under each input field |
+| Stack builder | Checkbox compounds to curate a patient stack |
+| Compound interaction flags | Auto-detects GLP-1 stacking, IGF-1 elevation, WADA class conflicts |
+| Print / PDF export | Print All or Print Stack — @media print formatted |
+| Mobile responsive | Fluid grid at 600px and 420px breakpoints |
+
+---
+
+## Phase 2 — Planned Automations (Make.com / Zapier)
+
+These automations are scoped and designed — implementation follows once Phase 1 is deployed to production. Each targets a specific revenue or efficiency outcome.
+
+### 1. Lead Capture → CRM Pipeline
+**Trigger:** Practitioner completes email gate
+**Action:** POST name + email + license type to HubSpot (or Airtable) → create contact with tags
+**Impact:** Every tool session becomes a tracked sales lead. Sales team sees who entered before calling.
+**Time saved:** Eliminates manual lead logging — ~5 min per inquiry × estimated 40 inquiries/month = **3.3 hrs/month**
+
+### 2. "Order →" Click → Owner Slack Alert
+**Trigger:** Practitioner clicks Order button on a specific compound
+**Action:** Log compound name + practitioner email → send Slack/email to owner within 60 seconds
+**Impact:** Buying signal captured in real time. Call within the hour → significantly higher close rate.
+**Time saved:** Replaces monitoring and follow-up guesswork — estimated **2 hrs/week** in missed follow-up recovered
+
+### 3. Protocol PDF → Auto-Email
+**Trigger:** Practitioner submits a query
+**Action:** Generate branded PDF of matched protocol stack → email to practitioner within 60 seconds
+**Impact:** Makes Triton look like a clinical platform, not just a supplier. Increases perceived value of the relationship.
+**Time saved:** Replaces manual protocol sheet creation — **15–20 min per request** eliminated
+
+### 4. Reorder Reminder Sequence
+**Trigger:** Order placed for a compound with a known cycle length (BPC-157: 30 days, Epithalon: 20 days, etc.)
+**Action:** Automated email at day 25 — "Your [compound] protocol is wrapping up — reorder for uninterrupted dosing"
+**Impact:** Highest ROI automation for repeat revenue. Converts one-time orders into recurring accounts.
+**Time saved:** Replaces manual follow-up calendar — **4–6 hrs/month** in manual outreach eliminated
+
+### 5. New SKU Alert to Past Inquirers
+**Trigger:** New compound added to the catalog
+**Action:** Query past practitioners who looked up related compounds → send targeted email
+**Impact:** Warm re-engagement with buyers who already showed intent. No cold outreach.
+**Time saved:** Replaces manual list segmentation — **2–3 hrs per campaign** eliminated
+
+---
+
 ## Impact
+
+### Time Saved — Phase 1 (Tool Alone)
+
+| Task replaced | Before | After | Saved per event |
+|---|---|---|---|
+| Compound recommendation inquiry | 20–30 min call/email | 90 sec self-serve | ~28 min |
+| Protocol reference lookup | 10–15 min manual research | Instant | ~12 min |
+| Interaction screening | 15–20 min manual cross-check | Auto-flagged | ~17 min |
+| Protocol sheet creation | 20–30 min formatting | Print button | ~25 min |
+| **Monthly total (est. 40 queries)** | **~26 hrs** | **~1 hr** | **~25 hrs/month** |
+
+### Time Saved — Phase 2 (With Automations)
+
+| Automation | Time saved/month |
+|---|---|
+| Lead capture → CRM (no manual logging) | 3.3 hrs |
+| Order click alerts (recovered follow-up) | 8 hrs |
+| Auto PDF emails (no manual protocol sheets) | 6 hrs |
+| Reorder reminders (no manual follow-up calendar) | 5 hrs |
+| New SKU campaigns (no manual segmentation) | 2.5 hrs |
+| **Phase 2 additional savings** | **~25 hrs/month** |
+
+### Combined Impact (Phase 1 + 2)
 
 | Metric | Value |
 |---|---|
-| Build time | ~12 hours (2 sessions) |
-| Compounds covered | 30 SKUs across 5 clinical categories |
-| Protocol data entries | 30 × 4 sections (indications, mechanism, dosage, warnings) |
-| PDF vectors indexed | 237 (LaValle Handbook 2022) |
-| API cost per query | ~$0.01–0.05 (Claude + Pinecone retrieval) |
-| Equivalent consultant time replaced per query | 15–30 min per practitioner inquiry |
+| Total monthly time savings | ~50 hrs/month |
+| At $150/hr practitioner billing rate | **$7,500/month in recovered time** |
+| Estimated build cost (agency equivalent) | $4,475 (Phase 1) + ~$2,500 (Phase 2) = $6,975 |
+| Payback period | **< 1 month** |
+| Projected revenue impact (2 extra clinic accounts) | $6,000–12,000/year |
+| API cost per query | ~$0.02–0.05 |
 
 ---
 
