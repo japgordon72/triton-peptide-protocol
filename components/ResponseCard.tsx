@@ -137,7 +137,7 @@ export default function ResponseCard({ compounds, response, mode, selectedStack,
         borderRadius: "10px",
         padding: "18px",
       }}>
-        <p style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--teal)", fontWeight: 600, margin: "0 0 10px" }}>
+        <p style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--teal)", fontWeight: 600, margin: "0 0 14px" }}>
           Clinical Summary
           {mode === "rag" && (
             <span style={{ color: "rgba(75,163,181,0.5)", fontWeight: 400, letterSpacing: 0, textTransform: "none", fontSize: "10px", marginLeft: "6px" }}>
@@ -145,9 +145,7 @@ export default function ResponseCard({ compounds, response, mode, selectedStack,
             </span>
           )}
         </p>
-        <p style={{ margin: 0, fontSize: "14px", lineHeight: 1.75, color: "rgba(255,255,255,0.88)", whiteSpace: "pre-wrap" }}>
-          {response}
-        </p>
+        <StructuredResponse text={response} />
       </div>
 
       {/* Compound cards */}
@@ -312,6 +310,84 @@ function ProtocolSection({ label, children, color = "rgba(75,163,181,0.7)" }: {
         {label}
       </p>
       {children}
+    </div>
+  );
+}
+
+const SECTION_STYLES: Record<string, { color: string; dotColor: string }> = {
+  "🧬 Patient Profile":    { color: "rgba(75,163,181,0.9)",   dotColor: "rgba(75,163,181,0.7)" },
+  "🎯 Priority Stack":     { color: "rgba(100,200,140,0.9)",  dotColor: "rgba(100,200,140,0.7)" },
+  "⚠️ Key Considerations": { color: "rgba(252,160,100,0.9)",  dotColor: "rgba(252,160,100,0.7)" },
+  "💊 Protocol Note":      { color: "rgba(200,180,255,0.9)",  dotColor: "rgba(200,180,255,0.7)" },
+};
+const DEFAULT_STYLE = { color: "rgba(75,163,181,0.9)", dotColor: "rgba(75,163,181,0.7)" };
+
+function StructuredResponse({ text }: { text: string }) {
+  if (!text) return null;
+
+  const sections: { header: string; lines: string[] }[] = [];
+  let current: { header: string; lines: string[] } | null = null;
+
+  for (const raw of text.split("\n")) {
+    const line = raw.trim();
+    // Match emoji section headers (e.g. "🧬 Patient Profile")
+    const isHeader = Object.keys(SECTION_STYLES).some(h => line === h) ||
+                     line.match(/^[\u{1F300}-\u{1FAFF}]/u);
+    if (isHeader && line.length > 2) {
+      if (current) sections.push(current);
+      current = { header: line, lines: [] };
+    } else if (current) {
+      if (line && line !== "---") current.lines.push(line);
+    } else if (line && line !== "---") {
+      sections.push({ header: "", lines: [line] });
+    }
+  }
+  if (current) sections.push(current);
+
+  // Fallback: no structure detected
+  if (sections.length === 0 || (sections.length === 1 && !sections[0].header)) {
+    return (
+      <p style={{ margin: 0, fontSize: "13px", lineHeight: 1.75, color: "rgba(255,255,255,0.85)", whiteSpace: "pre-wrap" }}>
+        {text}
+      </p>
+    );
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      {sections.map((s, i) => {
+        const style = SECTION_STYLES[s.header] ?? DEFAULT_STYLE;
+        return (
+          <div key={i}>
+            {s.header && (
+              <p style={{
+                margin: "0 0 7px",
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: style.color,
+              }}>
+                {s.header}
+              </p>
+            )}
+            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+              {s.lines.map((line, j) => {
+                const isBullet = line.startsWith("•") || line.startsWith("-");
+                const content = isBullet ? line.replace(/^[•\-]\s*/, "") : line;
+                return isBullet ? (
+                  <div key={j} style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                    <span style={{ color: style.dotColor, flexShrink: 0, lineHeight: "1.65", fontSize: "13px" }}>•</span>
+                    <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.85)", lineHeight: 1.65 }}>{content}</span>
+                  </div>
+                ) : (
+                  <p key={j} style={{ margin: 0, fontSize: "13px", color: "rgba(255,255,255,0.85)", lineHeight: 1.65 }}>{content}</p>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
