@@ -115,6 +115,14 @@ export default function ProtocolPage() {
     setSelectedStack([]);
   }
 
+  function handleSignOut() {
+    localStorage.removeItem("ageVerified");
+    localStorage.removeItem("practitionerName");
+    localStorage.removeItem("practitionerEmail");
+    localStorage.removeItem("practitionerLicense");
+    router.replace("/");
+  }
+
   function handlePrint() {
     setPrintMode(true);
     setTimeout(() => {
@@ -163,6 +171,21 @@ export default function ProtocolPage() {
             padding: "3px 8px",
             color: "var(--teal)",
           }}>503B · Licensed Practitioner</span>
+          <button
+            onClick={handleSignOut}
+            className="no-print"
+            style={{
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: "4px",
+              padding: "3px 10px",
+              fontSize: "11px",
+              color: "rgba(160,174,192,0.5)",
+              cursor: "pointer",
+            }}
+          >
+            Sign out
+          </button>
         </div>
       </header>
 
