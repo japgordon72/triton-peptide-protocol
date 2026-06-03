@@ -53,3 +53,8 @@ scripts/__pycache__/
 
 # Sample/preview files (local only)
 sample-output.html
+
+# Duplicate frontend/ scaffold (source of truth is root app/ dir)
+frontend/
+
+.vercel
